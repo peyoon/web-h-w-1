@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang = "ko">
+<head>
+  <meta charset = "UTF-8">
+  <meta http_equiv = "X-UA-compatible" content = "IE=edge">
+  <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
+    <title>최대공약수 계산기</title>
+    <link rel="stylesheet" href="web.css">
+  </head>
+  <body>
+    <div>
+      <label for="num1">첫번쨰 수:</label>
+      <input type="number" id="num1">
+    </div>
+    <div>
+      <label for="num2">두번째 수:</label>
+      <input type="number" id="num2">
+    </div>
+    <div>
+      <button onclick="calculate()">계산</button>
+    </div>
+    <div>
+      <label for="result">최대공약수:</label>
+      <span id="result"></span>
+    </div>
+    <script>
+      function getGDC(a, b) {
+        if (b == 0) {
+          return a;
+        } else {
+          return getGDC(b, a % b);
+        }
+      }
+
+      function calculate() {
+        const num1 = Number(document.getElementById('num1').value);
+        const num2 = Number(document.getElementById('num2').value);
+        const result = getGDC(num1, num2);
+        document.getElementById('result').textContent = result;
+      }
+    </script>
+  </body>
+</html>
